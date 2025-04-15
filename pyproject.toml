@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling >= 1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pyDSV"
+version = "0.1.0"
+authors = [
+  { name="Margherita Martorana", email="m.martorana@vu.nl" },
+]
+description = "A Python tool for converting CSV data into RDF using the DSV ontology"
+readme = "README.md"
+requires-python = ">=3.9,<3.11"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+license = "MIT"
+
+[project.urls]
+Homepage = "https://github.com/ritamargherita/pyDSV"
+Issues = "https://github.com/ritamargherita/pyDSV/issues"

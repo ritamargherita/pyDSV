@@ -1,0 +1,40 @@
+name: Python package
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.9, 3.10, 3.11]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install Poetry
+      run: |
+        curl -sSL https://install.python-poetry.org | python3 -
+
+    - name: Install dependencies with Poetry
+      run: |
+        poetry install
+
+    - name: Check csv2dsv command
+      run: |
+        poetry run which csv2dsv
+        poetry run csv2dsv --version
+
+    - name: Run tests with Poetry
+      run: |
+        poetry run pytest
